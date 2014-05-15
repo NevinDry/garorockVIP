@@ -12,12 +12,26 @@
 
     
     <div class="formLogin">
-		<h4>Welcome in eCatalogue administration tool.</h4> 
+		<h4>Inscrivez vous à une équipe !</h4> 
 
-			<input type="text" name="mail" id="mail" class="span3" placeholder="votre adresse twitter" /><br>
+			<input class="form-control" type="text" name="mail" id="mail"  placeholder="votre adresse twitter" /><br>
 			
-			<input type="hidden" name="pwd" id="pwd"  value="" size=32>
-			<input type="button" name="submitbtn" value="identification">				
+			<input class="form-control" type="password" name="pwd" id="pwd"  placeholder="votre adresse twitter" size=32>
+			
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="team1">
+			    Equipe 1
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios2" value="team2">
+			    Equipe 2
+			  </label>
+			</div>
+			
+			<input class="btn" type="button" name="submitbtn" value="Rejoindre l'équipe">				
 
 	</div>
   </body>
