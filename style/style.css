@@ -1,0 +1,56 @@
+.topTemplate{
+height: 316px;
+width: 100%;
+float: left;
+position: relative;
+background: url('http://www.rockurlife.net/img/uploads/2014/02/1911965_712843208761128_1243146983_n.jpg');
+background-repeat: no-repeat;
+}
+
+.formLogin{
+	float: left;
+	position: relative;
+	width: 100%;
+	margin-top: 30px;
+}
+
+h4{
+	text-align: center;
+	margin-bottom: 30px;
+}
+input[type="text"]{
+width: 40%;
+margin-left: 35px;
+float: left;
+}
+input[type="password"]{
+width: 40%;
+margin-left: 35px;
+float: left;
+position: relative;
+margin-top: -20px;
+}
+.radio{
+	display: block;
+	min-height: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 20px;
+	width: 25%;
+	float: left;
+	position: relative;
+	margin-left: 168px;
+}
+.radio+.radio, .checkbox+.checkbox{
+	margin-top:10px;
+}
+.radios{
+	width: 100%;
+	margin-top: 20px;
+	float: left;
+	margin-bottom: 20px;
+}
+.final{
+	width:100%;
+	text-align: center;
+}
