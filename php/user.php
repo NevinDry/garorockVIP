@@ -14,14 +14,15 @@ if(isset($_GET["team"]))
 	$team = $_GET["team"];
 }
 
-print_r($team." ".$mail." ".$nom);
+$varForCsv = $nom.";".$mail.";".$team.";\r\n";
 
-$fichierUser = '../users.json';
+$fichierUser = '../users.csv';
 
-if(!$fp = fopen($fichierUser, 'w+')){
-	echo "Echec de l'ouverture du fichier";
+if(!$fp = fopen($fichierUser, 'a')){
 	exit;
 } else {
 	echo "good";
+	fwrite($fp, $varForCsv);
 }
+
 ?>
