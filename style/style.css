@@ -1,8 +1,8 @@
 .topTemplate{
-	height: 316px;
+	height: 40%;
 	width: 100%;
 	float: left;
-	position: relative;
+	position: absolute;
 	background: url('http://www.rockurlife.net/img/uploads/2014/02/1911965_712843208761128_1243146983_n.jpg');
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -10,37 +10,38 @@
 
 .formLogin{
 	float: left;
-	position: relative;
+	position: absolute;
 	width: 100%;
 	margin-top: 30px;
+	top: 40%;
 }
 
 h4{
 	text-align: center;
-	margin-bottom: 30px;
+	margin-bottom: 35px;
 }
 input[type="text"]{
-width: 40%;
-margin-left: 35px;
-float: left;
+	width: 46%;
+	margin-left: 2%;
+	float: left;
 }
 input[type="password"]{
-width: 40%;
-margin-left: 35px;
-float: left;
-position: relative;
-margin-top: -20px;
-}
-.radio{
-	display: block;
-	min-height: 20px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding-left: 20px;
-	width: 25%;
+	width: 40%;
+	margin-left: 35px;
 	float: left;
 	position: relative;
-	margin-left: 168px;
+	margin-top: -20px;
+}
+.radio{
+display: block;
+min-height: 20px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding-left: 20px;
+float: left;
+position: relative;
+width: 40%;
+margin-left: 10%;
 }
 .radio+.radio, .checkbox+.checkbox{
 	margin-top:10px;
@@ -51,7 +52,10 @@ margin-top: -20px;
 	float: left;
 	margin-bottom: 20px;
 }
-.final{
-	width:100%;
+.centerbtn{
+	float: left;
+	position: relative;
 	text-align: center;
+	width: 100%;
+	margin-top:20px;
 }
