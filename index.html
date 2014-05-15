@@ -10,6 +10,9 @@
     <script src="style/js/jquery.js"></script>
     <script src="style/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      $("#team1").append("toto");
+    </script>
   </head>
   <body>
 
@@ -17,12 +20,24 @@
     
       <div class="formLogin">
   		  <h4>Inscrivez vous à une équipe !</h4> 
-  			
-			<input class="form-control" type="text" name="mail" id="mail"  placeholder="votre adresse twitter" /><br>
-			
-			<input style="margin-top:-20px" class="form-control" type="text" name="nom" id="nom"  placeholder="votre prenom">
-			
-      <div class="radios">
+  		
+      <div class="blockLeft">	
+			   <input class="form-control" type="text" name="mail" id="mail"  placeholder="votre adresse twitter" /><br>
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="team1">
+                Equipe 1
+            </label>
+      </div>
+
+      <div class="blockright">
+			   <input class="form-control" type="text" name="nom" id="nom"  placeholder="votre prenom">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="team2">
+                Equipe 2
+            </label>
+      </div>
+
+     <!-- <div class="radios">
   			<div class="radio">
   			  <label>
   			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="team1">
@@ -40,11 +55,23 @@
   			   <input class="btn" type="button" name="submitbtn" value="Rejoindre l'équipe">				
         </div>
      </div>
-    </div>
+    </div>-->
 	
+  <div class="centerbtn">
+     <input class="btn" type="button" name="submitbtn" value="Rejoindre l'équipe">        
+  </div>
+
 	<div class="response">
+
+  	 <div class="team" style="border-right:1px solid #ccc" id="team1">
+        Equipe 1
+     </div>
+    
+     <div class="team" id="team2">
+        Equipe 2
+     </div>
 	
-	</div>
+  </div>
 
   </body>
 </html>

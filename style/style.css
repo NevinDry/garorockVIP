@@ -1,5 +1,5 @@
 .topTemplate{
-	height: 40%;
+	height: 45%;
 	width: 100%;
 	float: left;
 	position: absolute;
@@ -19,18 +19,6 @@
 h4{
 	text-align: center;
 	margin-bottom: 35px;
-}
-input[type="text"]{
-	width: 46%;
-	margin-left: 2%;
-	float: left;
-}
-input[type="password"]{
-	width: 40%;
-	margin-left: 35px;
-	float: left;
-	position: relative;
-	margin-top: -20px;
 }
 .radio{
 display: block;
@@ -57,5 +45,47 @@ margin-left: 10%;
 	position: relative;
 	text-align: center;
 	width: 100%;
-	margin-top:20px;
+	margin-top:80px;
+}
+.response{
+	position: absolute;
+	top: 125%;
+	width: 100%;
+	float: left;
+}
+.team{
+	width: 50%;
+	float: left;
+	position: relative;
+	height: 150px;
+	text-align: center;
+	color: #818080;
+	font-weight: bold;
+}
+.team .user{
+	margin-left: 25px;
+}
+.blockright{
+	width: 50%;
+	height: 40px;
+	float: left;
+	position: relative;
+	font-weight: 100;
+text-align: center;
+}
+label{
+	margin-top: 25px;
+}
+.blockLeft{
+	width: 50%;
+	float: left;
+	height: 40px;
+	position: relative;
+	font-weight: 100;
+text-align: center;
+}
+input[type="text"]{
+	width: 95%;
+	margin-left: 2%;
+	float: left;
 }
