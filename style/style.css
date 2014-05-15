@@ -1,10 +1,11 @@
 .topTemplate{
-height: 316px;
-width: 100%;
-float: left;
-position: relative;
-background: url('http://www.rockurlife.net/img/uploads/2014/02/1911965_712843208761128_1243146983_n.jpg');
-background-repeat: no-repeat;
+	height: 316px;
+	width: 100%;
+	float: left;
+	position: relative;
+	background: url('http://www.rockurlife.net/img/uploads/2014/02/1911965_712843208761128_1243146983_n.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 .formLogin{
