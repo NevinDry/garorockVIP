@@ -1,0 +1,15 @@
+{
+    "Team1": {
+        "Users": [
+                { "Nom": "Bastien", "Email": "Xoorus@lol.com" },
+                { "Nom": "Etienne", "Email": "Gronoob@lol.com" }
+            ]
+        },
+
+    "Team2": {
+        "Users": [
+                { "Nom": "tagueule", "Email": "Etienne@lol.com" },
+                { "Nom": "JtePown", "Email": "SaleNoob@lol.com" }
+            ]
+        }
+}

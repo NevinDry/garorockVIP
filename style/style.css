@@ -1,8 +1,8 @@
 .topTemplate{
-	height: 316px;
+	height: 40%;
 	width: 100%;
 	float: left;
-	position: relative;
+	position: absolute;
 	background: url('http://www.rockurlife.net/img/uploads/2014/02/1911965_712843208761128_1243146983_n.jpg');
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -10,9 +10,10 @@
 
 .formLogin{
 	float: left;
-	position: relative;
+	position: absolute;
 	width: 100%;
 	margin-top: 30px;
+	top: 40%;
 }
 
 h4{
@@ -20,8 +21,8 @@ h4{
 	margin-bottom: 35px;
 }
 input[type="text"]{
-	width: 40%;
-	margin-left: 35px;
+	width: 46%;
+	margin-left: 2%;
 	float: left;
 }
 input[type="password"]{
