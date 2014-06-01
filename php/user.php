@@ -16,13 +16,14 @@ if(isset($_GET["team"]))
 
 $varForCsv = $nom.";".$mail.";".$team.";\r\n";
 
-$fichierUser = '../users.csv';
+$fichierUser = 'users.csv';
 
 if(!$fp = fopen($fichierUser, 'a')){
 	exit;
 } else {
 	echo "good";
 	fwrite($fp, $varForCsv);
+	fclose($fp);
 }
 
 ?>
