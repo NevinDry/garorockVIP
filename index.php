@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+	include"php/showUser.php";
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +11,8 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
+    
     <link href="css/half-slider.css" rel="stylesheet">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -32,95 +36,8 @@
                     border-color:rgb(156, 79, 79) !important;
             }
     </style>
-    <?php
-            include('php/csvReader.php');
-
-            echo '<script>var MyUsers = new Array();</script>';
-            $file = 'users.csv';
-            $currentData = file_get_contents($file);
-            $lines = split("\n",$currentData);
-            $cpt = 0;
-
-            foreach($lines as $l){
-                    echo '<script> MyUsers['.$cpt.'] = "'.$l.'";</script>';
-                    $cpt++;
-            }
-    ?>
     <script>
-        function addUserInTeam(){
-            if (checkAllFieldsOk()){
-                var radioChecked = $('input[name=optionsRadios]:checked').val();
-                var user = $('#nameUser').val();
-                $("#"+radioChecked).append("<li>"+user+"</li>");
-                insertInCSVFile();
-                clearForm();
-            }
-        else{
-                alert('Veuillez renseigner les champs manquants');
-                colorUndefinedValues();
-            }
-        }
-        function clearForm(){
-            $("input[type='radio']:checked").prop('checked', false);
-            $("#idTwitter").val('');
-            $("#nameUser").val('');
-
-            $("#idTwitter").removeClass("borderRed");
-            $("#nameUser").removeClass("borderRed");
-        }
-        function checkAllFieldsOk(){
-            if($("#idTwitter").val() === "" || $("#idTwitter").val() === "undefined")
-                    return false;
-            if($("#nameUser").val() === "" || $("#nameUser").val() === "undefined")
-                    return false;
-            if ($('input[name=optionsRadios]:checked').val() === "undefined")
-                    return false;
-
-            return true;
-        }
-        function colorUndefinedValues(){
-            if($("#idTwitter").val() === "" || $("#idTwitter").val() === "undefined")
-                    $("#idTwitter").addClass("borderRed");
-
-            if($("#nameUser").val() === "" || $("#nameUser").val() === "undefined")
-                    $("#nameUser").addClass("borderRed");
-
-        }
-        function insertInCSVFile(){
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'php/csvWriter.php');
-            var form = new FormData();
-
-            var idtwitter = $('#idTwitter').val();
-            var name = $('#nameUser').val();
-            var team = $('input[name=optionsRadios]:checked').val();
-            form.append('idtwitter', idtwitter);
-            form.append('name', name);
-            form.append('team', team);
-
-            xhr.upload.onprogress = function(event) {
-                if (event.lengthComputable) {
-                }
-            }
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4) {
-                        // state OK
-                }
-            }
-            xhr.send(form);
-        }
         
-        setTimeout(function() { //timeout lancement jquery
-            for(var i = 0;i<MyUsers.length;i++){
-                var split = MyUsers[i].split(';');
-                var name = split[1];
-                var team = split[2];
-                console.log(team);
-                console.log(name);
-                $("#"+team).append('<li>'+name+'</li>');
-            }
-        }, 200);
     </script>
 
 </head>
@@ -216,8 +133,11 @@
             </div>
             <div class="row" style="margin-top: 50px;">
             	<div class="col-xs-12" style="text-align:center;">
-            		<input type="submit" value="Inscription" onclick="addUserInTeam();">
+            		<input class="btn" type="submit" value="Inscription"">
             	</div>
+            </div>
+            <div style="display : none" class="success">
+            	<span class="label label-success">Inscription Reussie !</span><br/>
             </div>
             
             <div style="border:1px solid #ccc;width: 80%;margin-left:10%;margin-top:100px;"></div>
@@ -226,11 +146,13 @@
             	<div class="col-xs-6">
                 	<label style="margin-left:45%;" >Team 1 </label><br>
 						<ul style="height:200px;" id="team1">
+							<?php getUsers(1); ?>
 						</ul>
             	</div>
             	<div class="col-xs-6">
                 	<label style="margin-left:45%;" >Team 2 </label><br>
 						<ul id="team2">
+							<?php getUsers(2); ?>
 						</ul>
         		</div>
             </div>

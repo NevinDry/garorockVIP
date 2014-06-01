@@ -1,39 +1,20 @@
 <?php 
 function getUsers($team)
 {
-$fichierUser = 'users.csv';
-if(!$handle = fopen($fichierUser, 'r')){
-	echo"Erreur";
-	exit;
-}else{
-	print_r($handle);
-	
-		$length = 1000;
-		$delimiter = ";";
-		echo "<table>\n";
-		echo "<td><b>Name</b></td><td><b>Surname</b></td><td><b>Email</b></td>";
-	
-		$i = 0; 
-		while (($data = fgetcsv( $handle, $length, $delimiter)) !== FALSE )
-		{
-			echo"cool";
-			if( $i == 0 || $i == 3 ) // ADDED
-			{
-				$num = count($data);
-				echo "<tr>\n";
-	
-				for ($c=0; $c < $num; $c++)
-				{
-				echo "<td>".$data[$c]."</td>\n";
-				}
-						echo "</tr>\n";
-			}
-			$i++; // ADDED
+$currentTeam = "team".$team;
+$row = 1;
+echo($currentTeam);
+if (($handle = fopen("php/users.csv", "r")) !== FALSE) {
+	while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+		$num = count($data);
+		
+		//echo "<p> $num fields in line $row: <br /></p>\n";
+		$row++;
+		if($data[2] == $currentTeam){
+			echo($data[0]." (@".$data[1].")<br/>");
 		}
-		echo "</table>";
-		fclose($handle);
 	}
-
-	
+	fclose($handle);
+}
 }
 ?>

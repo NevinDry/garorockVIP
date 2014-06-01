@@ -1,7 +1,7 @@
 <?php 
-if(isset($_GET["mail"]))
+if(isset($_GET["twitName"]))
 {
-   $mail = $_GET["mail"];
+   $twitName = $_GET["twitName"];
 }
 
 if(isset($_GET["nom"]))
@@ -14,14 +14,14 @@ if(isset($_GET["team"]))
 	$team = $_GET["team"];
 }
 
-$varForCsv = $nom.";".$mail.";".$team.";\r\n";
+$varForCsv = $nom.";".$twitName.";".$team."\r\n";
 
 $fichierUser = 'users.csv';
 
 if(!$fp = fopen($fichierUser, 'a')){
 	exit;
 } else {
-	echo "good";
+	echo $nom." (@".$twitName.")<br/>";
 	fwrite($fp, $varForCsv);
 	fclose($fp);
 }

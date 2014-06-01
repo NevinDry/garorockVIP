@@ -1,18 +1,24 @@
 $(document).ready(function() {
 	$( ".btn" ).click(function() {
-		console.log("tamere");
 		var team = $( "input:radio[name=optionsRadios]:checked" ).val();
 		console.log(team);
-		var nom = $( "#nom" ).val();
+		var nom = $( "#nameUser" ).val();
 		console.log(nom);
-		var mail = $("#mail").val();
-		console.log(mail);
+		var twitName = $("#idTwitter").val();
+		console.log(twitName);
          $.ajax({
 	         type: "GET",
 	         url:"php/user.php",
-	         data: "mail="+mail+"&nom="+nom+"&team="+team,
+	         data: "twitName="+twitName+"&nom="+nom+"&team="+team,
 	         success: function(msg){
-	        	 $(".response").append(msg);
+	        	$(".success").show(1000).delay( 5000 );
+	        	$(".success").hide(1000);
+	        	 if(team == "team1"){
+	        		 $("#team1").append(msg);
+	        	 }else{
+	        		 $("#team2").append(msg);
+	        	 }
+	        	 
 	             console.log("reussit");
 	         }
 	     });
