@@ -6,6 +6,7 @@ $(document).ready(function() {
 		console.log(nom);
 		var twitName = $("#idTwitter").val();
 		console.log(twitName);
+		if (checkAllFieldsOk()){
          $.ajax({
 	         type: "GET",
 	         url:"php/user.php",
@@ -22,5 +23,29 @@ $(document).ready(function() {
 	             console.log("reussit");
 	         }
 	     });
+		}else{
+			colorUndefinedValues();
+			$(".danger").show(1000).delay( 5000 );
+        	$(".danger").hide(1000);
+		}
 	});
 });
+
+function checkAllFieldsOk(){
+    if($("#idTwitter").val() === "" || $("#idTwitter").val() === "undefined")
+            return false;
+    if($("#nameUser").val() === "" || $("#nameUser").val() === "undefined")
+            return false;
+    if ($('input[name=optionsRadios]:checked').val() === "undefined")
+            return false;
+
+    return true;
+}
+function colorUndefinedValues(){
+    if($("#idTwitter").val() === "" || $("#idTwitter").val() === "undefined")
+            $("#idTwitter").addClass("borderRed");
+
+    if($("#nameUser").val() === "" || $("#nameUser").val() === "undefined")
+            $("#nameUser").addClass("borderRed");
+
+}

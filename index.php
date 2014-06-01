@@ -139,19 +139,22 @@
             <div style="display : none" class="success">
             	<span class="label label-success">Inscription Reussie !</span><br/>
             </div>
+            <div style="display : none" class="danger">
+            	<span class="label label-danger""> Erreur lors de l'inscription ! </span><br/>
+            </div>
             
             <div style="border:1px solid #ccc;width: 80%;margin-left:10%;margin-top:100px;"></div>
             
             <div class="row" style="margin-top: 100px;">
             	<div class="col-xs-6">
-                	<label style="margin-left:45%;" >Team 1 </label><br>
-						<ul style="height:200px;" id="team1">
+                	<label style="margin-left:50%;" >Team 1 </label><br>
+						<ul style="height:200px; text-align:center;" id="team1">
 							<?php getUsers(1); ?>
 						</ul>
             	</div>
             	<div class="col-xs-6">
-                	<label style="margin-left:45%;" >Team 2 </label><br>
-						<ul id="team2">
+                	<label style="margin-left:50%;" >Team 2 </label><br>
+						<ul id="team2" style="height:200px; text-align:center;" >
 							<?php getUsers(2); ?>
 						</ul>
         		</div>
