@@ -133,14 +133,14 @@
             </div>
             <div class="row" style="margin-top: 50px;">
             	<div class="col-xs-12" style="text-align:center;">
-            		<input class="btn" type="submit" value="Inscription"">
+            		<input class="btn" type="submit" value="Inscription">
             	</div>
             </div>
             <div style="display : none" class="success">
             	<span class="label label-success">Inscription Reussie !</span><br/>
             </div>
             <div style="display : none" class="danger">
-            	<span class="label label-danger""> Erreur lors de l'inscription ! </span><br/>
+            	<span class="label label-danger"> Erreur lors de l'inscription ! </span><br/>
             </div>
             
             <div style="border:1px solid #ccc;width: 80%;margin-left:10%;margin-top:100px;"></div>
