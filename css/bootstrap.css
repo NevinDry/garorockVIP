@@ -5828,4 +5828,35 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.score1{
+
+color:white;
+	margin-top: 5px;
+	margin-bottom:5px;
+	height:30px;
+	background-color:#E74C3C;
+	width:25%;
+	-webkit-border-top-left-radius: 508px;
+-webkit-border-bottom-left-radius: 508px;
+-moz-border-radius-topleft: 508px;
+-moz-border-radius-bottomleft: 508px;
+border-top-left-radius: 508px;
+border-bottom-left-radius: 508px;
+}
+
+.score2{
+	color:white;
+    margin-top: 5px;
+	margin-bottom:5px;
+	height:30px;
+	background-color:#2ECC71;
+	width:75%;
+	-webkit-border-top-right-radius: 508px;
+-webkit-border-bottom-right-radius: 508px;
+-moz-border-radius-topright: 508px;
+-moz-border-radius-bottomright: 508px;
+border-top-right-radius: 508px;
+border-bottom-right-radius: 508px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

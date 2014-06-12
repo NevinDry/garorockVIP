@@ -1,10 +1,26 @@
+
+<?php 
+	$firstScore = 126;
+	$secondScore = 42;
+	$total = $firstScore + $secondScore;
+	$widthFirst = ($firstScore / $total) * 100;
+	$widthSecond = ($secondScore / $total) * 100;
+
+
+	$arr = array('a' => $widthFirst, 'b' => $widthSecond);
+
+    echo json_encode($arr);
+?>
+
+
 <?php
+/*
     $firstScore = $_REQUEST['team1'];
     $secondScore = $_REQUEST['team2'];
     $total = $firstScore + $secondScore;
     $widthFirst = ($firstScore / $total) * 100;
     $widthSecond = ($secondScore / $total) * 100;
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,3 +97,4 @@
 </body>
 
 </html>
+*/?>

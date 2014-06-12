@@ -1,4 +1,32 @@
+
+
+
 $(document).ready(function() {
+	
+	function f() {
+	    console.log( "hi" );
+	    $.ajax({
+	         type: "GET",
+	         url:"php/scores.php",
+	         success: function(msg){
+	        	 var parsedJSON = eval('('+msg+')');
+	        	 var teamA=parsedJSON.a;
+	        	 var teamB=parsedJSON.b;
+
+	        	 console.log('teamA:'+teamA+' teamB:'+teamB);
+	        	 
+	        	 $(".score1").width(teamA); 
+	             $(".score2").width(teamB);
+	             $(".score1").html("Score Equipe 1 : <strong>"+teamA+" %<strong>");
+	             $(".score2").html("Score Equipe 2 : <strong>"+teamB+" %<strong>");
+	        	 
+	             console.log("reussit");
+	         }
+	     });
+	        setTimeout( f, 3000 );
+	}
+	f();
+	
 	$( ".btn" ).click(function() {
 		var team = $( "input:radio[name=optionsRadios]:checked" ).val();
 		console.log(team);
@@ -49,3 +77,10 @@ function colorUndefinedValues(){
             $("#nameUser").addClass("borderRed");
 
 }
+
+function sleep(millis, callback) {
+    setTimeout(function()
+            { callback(); }
+    , millis);
+}
+

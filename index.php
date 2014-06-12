@@ -143,9 +143,18 @@
             	<span class="label label-danger"> Erreur lors de l'inscription ! </span><br/>
             </div>
             
-            <div style="border:1px solid #ccc;width: 80%;margin-left:10%;margin-top:100px;"></div>
+            <div style="border:1px solid #ccc;width: 80%;margin-left:10%;margin-top:80px;"></div>
+
             
-            <div class="row" style="margin-top: 100px;">
+           <div class="score" style="text-align: center;width: 100%;height:40px;">
+           	    <table style="width: 100%; margin-top:10px;">
+           	    <td class="score1" ></td>
+	            <td class="score2" ></td>
+	            </table>   
+           </div>
+           
+            <div style="border:1px solid #ccc;width: 80%;margin-left:10%;margin-bottom:10px;"></div>
+            <div class="row" style="margin-top: 50px;">
             	<div class="col-xs-6">
                 	<label style="margin-left:50%;" >Team 1 </label><br>
 						<ul style="height:200px; text-align:center;" id="team1">
