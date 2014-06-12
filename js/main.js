@@ -9,10 +9,14 @@ $(document).ready(function() {
 	         type: "GET",
 	         url:"php/scores.php",
 	         success: function(msg){
+	        	 console.log(msg);
 	        	 var parsedJSON = eval('('+msg+')');
 	        	 var teamA=parsedJSON.a;
 	        	 var teamB=parsedJSON.b;
-
+	        	 
+	        	 
+	        	 console.log('scoreA:'+parsedJSON.opt1+' teamB:'+parsedJSON.opt2);
+	        	 
 	        	 console.log('teamA:'+teamA+' teamB:'+teamB);
 	        	 
 	        	 $(".score1").width(teamA); 
@@ -23,7 +27,7 @@ $(document).ready(function() {
 	             console.log("reussit");
 	         }
 	     });
-	        setTimeout( f, 3000 );
+	        setTimeout( f, 5000 );
 	}
 	f();
 	
