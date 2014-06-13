@@ -8,13 +8,99 @@ $accesstoken = '283720162-gguI93VLXtam0sXABy23JB4iP6ZHwCu6M4tjwZlL';
 $accesstokensecret = '5dhYcGFfdEy5H6uFvXe2VTU51HxpigBB0DjKeuuhN50jS';
 $twitter = new TwitterOAuth($consumerkey, $consumersecret, $accesstoken, $accesstokensecret);
 
+//Récupération des hashtags
+$handle = fopen('hashtag.txt', 'r');
+if ($handle)
+{
+	$i = 0;
+	while (!feof($handle))
+	{
+		$buffer = fgets($handle);
+		$hashtag = $buffer;
+		$i++;
+	}
+	fclose($handle);
+}
+
+
+
+
+if (($handle = fopen("users.csv", "r")) !== FALSE) {
+	$row = 0;
+	while (($data = fgetcsv($handle, 1000, ";")) !== FALSE){
+		$users[$row][0] = $data[1];
+		$users[$row][1] = $data[2];
+		$row++;
+	}
+	fclose($handle);
+}
+
+
+
+$countTeam1 = 1;
+$countTeam2 = 1;
+$resultTeam1 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&src=typd&count=100');
+
+getTweetsAndCountTeam1($resultTeam1, $twitter);
+
+function getTweetsAndCountTeam1($resultTeam1, $twitter)
+{
+	foreach($resultTeam1->statuses as $tweet){
+		global $countTeam1,$countTeam2, $users, $row;
+		for($i = 0; $i<$row; $i++){
+			//print_r($tweet->user->screen_name);
+			if($tweet->user->screen_name == $users[$i][0]){
+				if($users[$i][1] == "team1"){
+					$countTeam1++;
+				}else{
+					$countTeam2++;
+				}
+			}
+		}
+	}
+	if($resultTeam1->search_metadata && isset($resultTeam1->search_metadata->next_results))
+	{
+		$getfield = $resultTeam1->search_metadata->next_results;
+		$resultTeam1 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json'.$getfield."&until=2014-06-09");
+		getTweetsAndCountTeam1($resultTeam1, $twitter);
+	}
+
+}
+
+$total = $countTeam1 + $countTeam2;
+$widthFirst = ($countTeam1 / $total) * 100;
+$widthSecond = ($countTeam2 / $total) * 100;
+$arr = array('a' => round($widthFirst), 'b' => round($widthSecond), 'opt1' => $countTeam1, 'opt2' => $countTeam2);
+
+echo json_encode($arr);
+
+
+
+/* Ancienne Version
+
+//Récupération des hashtags
+$handle = fopen('hashtag.txt', 'r');
+if ($handle)
+{
+	$i = 0;
+	while (!feof($handle))
+	{
+		$buffer = fgets($handle);
+		$hashtag[$i] = $buffer;
+		$i++;
+	}
+	fclose($handle);
+}
+
+$hashtagFirstTeam = $hashtag[0];
+$hashtagSecondTeam = $hashtag[1];
 
 
 
 //        Team 1
-
-$countTeam1 = 0;
-$resultTeam1 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23FiresideGathering&src=typd&count=100');
+$getTeam1 = 'https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtagFirstTeam.'&src=typd&count=100';
+$countTeam1 = 1;
+$resultTeam1 = $twitter->get($getTeam1);
 getTweetsAndCountTeam1($resultTeam1, $twitter);
 
 function getTweetsAndCountTeam1($resultTeam1, $twitter)
@@ -35,12 +121,10 @@ function getTweetsAndCountTeam1($resultTeam1, $twitter)
 	
 }   
 
-
-
 //             Team 2
-   
-$countTeam2 = 0;
-$resultTeam2 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23mushetnevin&src=typd&count=100');
+$getTeam2 = 'https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtagSecondTeam.'&src=typd&count=100';
+$countTeam2 = 1;
+$resultTeam2 = $twitter->get( $getTeam2);
 getTweetsAndCountTeam2($resultTeam2, $twitter);
 
 function getTweetsAndCountTeam2($resultTeam2, $twitter)
@@ -64,7 +148,7 @@ function getTweetsAndCountTeam2($resultTeam2, $twitter)
 $total = $countTeam1 + $countTeam2;
 $widthFirst = ($countTeam1 / $total) * 100;
 $widthSecond = ($countTeam2 / $total) * 100;
-$arr = array('a' => $widthFirst, 'b' => $widthSecond, 'opt1' => $countTeam1, 'opt2' => $countTeam2);
+$arr = array('a' => round($widthFirst), 'b' => round($widthSecond), 'opt1' => $countTeam1, 'opt2' => $countTeam2);
 
 echo json_encode($arr);
 

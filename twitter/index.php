@@ -8,19 +8,38 @@ $accesstokensecret = '5dhYcGFfdEy5H6uFvXe2VTU51HxpigBB0DjKeuuhN50jS';
 $twitter = new TwitterOAuth($consumerkey, $consumersecret, $accesstoken, $accesstokensecret);
 
 
+if (($handle = fopen("../php/users.csv", "r")) !== FALSE) {
+	$row = 0;
+	while (($data = fgetcsv($handle, 1000, ";")) !== FALSE){
+		$users[$row][0] = $data[1];
+		$users[$row][1] = $data[2];
+		$row++;
+	}
+	fclose($handle);
+}
 
 
-//        Team 1
 
-$countTeam1 = 0;
+$countTeam1 = 1;
+$countTeam2 = 1;
 $resultTeam1 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23Hearthstone&src=typd&count=100');
+
 getTweetsAndCountTeam1($resultTeam1, $twitter);
 
 function getTweetsAndCountTeam1($resultTeam1, $twitter)
 {	
 	foreach($resultTeam1->statuses as $tweet){		
-		global $countTeam1;
-		$countTeam1++;
+		global $countTeam1,$countTeam2, $users, $row;
+		for($i = 0; $i<$row; $i++){
+			//print_r($tweet->user->screen_name);
+			if($tweet->user->screen_name == $users[$i][0]){
+				if($users[$i][1] == "team1"){
+					$countTeam1++;
+				}else{
+					$countTeam2++;
+				}
+			}
+		}
 	}
 	if($resultTeam1->search_metadata && isset($resultTeam1->search_metadata->next_results))
 	{
@@ -31,38 +50,12 @@ function getTweetsAndCountTeam1($resultTeam1, $twitter)
 	
 }   
 
+echo($countTeam1);
+echo($countTeam2);
 
 
 //             Team 2
    
-$countTeam2 = 0;
-$resultTeam2 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23mushetnevin&src=typd&count=100');
-getTweetsAndCountTeam2($resultTeam2, $twitter);
-
-function getTweetsAndCountTeam2($resultTeam2, $twitter)
-{
-	foreach($resultTeam2->statuses as $tweet){
-		global $countTeam2;
-		$countTeam2++;
-	}
-	if($resultTeam2->search_metadata && isset($resultTeam2->search_metadata->next_results))
-	{
-		$getfield = $resultTeam2->search_metadata->next_results;
-		$resultTeam2 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json'.$getfield."&until=2014-06-09");
-		getTweetsAndCountTeam2($resultTeam2, $twitter);
-	}
-
-}
-
-$total = $countTeam1 + $countTeam2;
-$widthFirst = ($countTeam1 / $total) * 100;
-$widthSecond = ($countTeam2 / $total) * 100;
-
-$arr = array('a' => $widthFirst, 'b' => $widthSecond);
-
-echo json_encode($arr);
-
-
 
    
    // if(!empty($result))

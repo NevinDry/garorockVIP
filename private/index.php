@@ -11,7 +11,7 @@
     <link href="../css/bootstrap.css" rel="stylesheet">
     <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/mainPrivate.js"></script>
     
     <link href="../css/half-slider.css" rel="stylesheet">
     <meta name="description" content="">
@@ -134,7 +134,24 @@
             <span class="icon-next"></span>
         </a>
     </div>
-    <div class="section-colored" style="margin-top:120px">
+            <div class="row" style="margin-top: 80px;">
+            	<div class="col-xs-6">
+            		<label>Hashtag (sans le # ni ponctuation) :</label><input type="text" id="hash1" class="form-control">
+        		</div>
+            </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+            	<div class="col-xs-12" style="text-align:center;">
+            		<input class="btnPrivate" type="submit" value="Changer">
+            </div>
+            <div style="display : none" class="success">
+            	<span class="label label-success">Changement Résussit !</span><br/>
+            </div>
+            <div style="display : none" class="danger">
+            	<span class="label label-danger"> Erreur lors du changement ! </span><br/>
+            </div>
+    
+    <div class="section-colored" style="margin-top:80px">
         <div class="container">
             <div class="row">
                     <table class="table table-striped">

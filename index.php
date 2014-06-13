@@ -123,25 +123,20 @@
         		</div>
             </div>
             
-            <div class="row" style="margin-top: 50px;">
-            	<div class="col-xs-6" style="text-align:center;">
-                	<label >Team 1 </label><br><input type="radio" name="optionsRadios" id="optionsRadios2" value="team1">
-            	</div>
-            	<div class="col-xs-6" style="text-align:center;">
-            		<label >Team 2 </label><br><input type="radio" name="optionsRadios" id="optionsRadios2" value="team2">
-        		</div>
-            </div>
-            <div class="row" style="margin-top: 50px;">
-            	<div class="col-xs-12" style="text-align:center;">
-            		<input class="btn" type="submit" value="Inscription">
-            	</div>
-            </div>
-            <div style="display : none" class="success">
-            	<span class="label label-success">Inscription Reussie !</span><br/>
-            </div>
-            <div style="display : none" class="danger">
-            	<span class="label label-danger"> Erreur lors de l'inscription ! </span><br/>
-            </div>
+			 <div class="row" style="margin-top: 50px;">
+			            	<div class="col-xs-6" style="text-align:center;">
+			                	<label >Team 1 </label><br><input type="radio" name="optionsRadios" id="optionsRadios2" value="team1">
+			            	</div>
+			            	<div class="col-xs-6" style="text-align:center;">
+			            		<label >Team 2 </label><br><input type="radio" name="optionsRadios" id="optionsRadios2" value="team2">
+			        		</div>
+			            </div>
+			            <div class="row" style="margin-top: 50px;">
+			            	<div class="col-xs-12" style="text-align:center;">
+			            		<input class="btn" type="submit" value="Inscription">
+			            	</div>
+			            </div>
+			    </div>
             
             <div style="border:1px solid #ccc;width: 80%;margin-left:10%;margin-top:80px;"></div>
 

@@ -13,21 +13,22 @@ $(document).ready(function() {
 	        	 var parsedJSON = eval('('+msg+')');
 	        	 var teamA=parsedJSON.a;
 	        	 var teamB=parsedJSON.b;
+	        	 var score1 = parsedJSON.opt1;
+	        	 var score2 = parsedJSON.opt2;
 	        	 
-	        	 
-	        	 console.log('scoreA:'+parsedJSON.opt1+' teamB:'+parsedJSON.opt2);
+	        	 console.log('scoreA:'+score1+' teamB:'+score2);
 	        	 
 	        	 console.log('teamA:'+teamA+' teamB:'+teamB);
 	        	 
 	        	 $(".score1").width(teamA); 
 	             $(".score2").width(teamB);
-	             $(".score1").html("Score Equipe 1 : <strong>"+teamA+" %<strong>");
-	             $(".score2").html("Score Equipe 2 : <strong>"+teamB+" %<strong>");
+	             $(".score1").html("Score Equipe 1 : <strong>"+score1+" votes<strong>");
+	             $(".score2").html("Score Equipe 2 : <strong>"+score2+" votes<strong>");
 	        	 
 	             console.log("reussit");
 	         }
 	     });
-	        setTimeout( f, 5000 );
+	        setTimeout( f, 10000 );
 	}
 	f();
 	
