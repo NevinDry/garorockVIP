@@ -50,8 +50,6 @@ function getTweetsAndCountTeam1($resultTeam1, $twitter)
 	
 }   
 
-echo($countTeam1);
-echo($countTeam2);
 
 
 //             Team 2

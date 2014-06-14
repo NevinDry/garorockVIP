@@ -37,8 +37,8 @@ if (($handle = fopen("users.csv", "r")) !== FALSE) {
 
 
 
-$countTeam1 = 1;
-$countTeam2 = 1;
+$countTeam1 = 0;
+$countTeam2 = 0;
 $resultTeam1 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&src=typd&count=100');
 
 getTweetsAndCountTeam1($resultTeam1, $twitter);
@@ -61,15 +61,22 @@ function getTweetsAndCountTeam1($resultTeam1, $twitter)
 	if($resultTeam1->search_metadata && isset($resultTeam1->search_metadata->next_results))
 	{
 		$getfield = $resultTeam1->search_metadata->next_results;
-		$resultTeam1 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json'.$getfield."&until=2014-06-09");
+		$resultTeam1 = $twitter->get('https://api.twitter.com/1.1/search/tweets.json'.$getfield);
 		getTweetsAndCountTeam1($resultTeam1, $twitter);
 	}
 
 }
 
-$total = $countTeam1 + $countTeam2;
-$widthFirst = ($countTeam1 / $total) * 100;
-$widthSecond = ($countTeam2 / $total) * 100;
+if($countTeam1+$countTeam2 != 0){
+	$total = $countTeam1 + $countTeam2;
+	$widthFirst = ($countTeam1 / $total) * 100;
+	$widthSecond = ($countTeam2 / $total) * 100;
+}else{
+	$widthFirst = 50;
+	$widthSecond = 50;
+	
+}
+
 $arr = array('a' => round($widthFirst), 'b' => round($widthSecond), 'opt1' => $countTeam1, 'opt2' => $countTeam2);
 
 echo json_encode($arr);

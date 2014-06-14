@@ -18,10 +18,18 @@ $(document).ready(function() {
 	        	 
 	        	 console.log('scoreA:'+score1+' teamB:'+score2);
 	        	 
-	        	 console.log('teamA:'+teamA+' teamB:'+teamB);
-	        	 
-	        	 $(".score1").width(teamA); 
-	             $(".score2").width(teamB);
+	        	 console.log('teamA:'+teamA+' teamB:'+teamB);     	 
+	        	 if(teamA > 75){
+	        		 $(".score1").css('width','75%'); 
+	        		 $(".score2").css('width','25%'); 
+	        	 }else if(teamB > 75){
+	        		 $(".score2").css('width','75%'); 
+	        		 $(".score1").css('width','25%'); 
+	        	 }else{
+		        	 $(".score1").css('width', teamA+'%'); 
+		             $(".score2").css('width', teamB+'%'); 
+	        	 }
+
 	             $(".score1").html("Score Equipe 1 : <strong>"+score1+" votes<strong>");
 	             $(".score2").html("Score Equipe 2 : <strong>"+score2+" votes<strong>");
 	        	 

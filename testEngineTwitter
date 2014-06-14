@@ -1,0 +1,18 @@
+Test perso :
+- Changer le hastag dans backoffice /private
+- Ajouter son utilisateur via le formulaire
+- Twitté avec le compte ajouté sur le Hashtag
+- Regardez le score s'incrémenter sur le barre de progression
+
+
+
+Tests globaux :
+Faire des tests avec les hashtags suivants :
+#FiresideGathering 
+#mushetnevin
+
+
+Avec les utilisateurs suvants :
+@MushNevin
+@EtienneCognac
+@Hearthnews_Fr

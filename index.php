@@ -142,7 +142,7 @@
 
             
            <div class="score" style="text-align: center;width: 100%;height:40px;">
-           	    <table style="width: 100%; margin-top:10px;">
+           	    <table style="width: 80%; margin-left: auto;margin-top:10px;margin-right: auto;">
            	    <td class="score1" ></td>
 	            <td class="score2" ></td>
 	            </table>   
