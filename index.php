@@ -116,10 +116,10 @@
         <div class="container">
             <div class="row">
             	<div class="col-xs-6">
-            		<label>Votre Nom :</label><input type="text" id="nameUser" class="form-control">
+            		<label>Votre Nom :</label><input type="text" id="nameUser" class="form-control" placeholder="Votre nom">
         		</div>
             	<div class="col-xs-6">
-            		<label>Votre @ Twitter :</label><input type="text" id="idTwitter" class="form-control">
+            		<label>Votre @ Twitter :</label><input type="text" id="idTwitter" class="form-control" placeholder="Votre identifiant sans le @">
         		</div>
             </div>
             

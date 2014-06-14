@@ -5,7 +5,7 @@ if(isset($_GET["hash1"]))
 }
 
 
-//Récupération des hashtags
+//Supréssion
 $handle = fopen('hashtag.txt', 'w');
 ftruncate($handle,0);
 

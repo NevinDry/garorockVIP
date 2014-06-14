@@ -1,5 +1,7 @@
 
 $(document).ready(function() {	
+	
+	
 	$( ".btnPrivate" ).click(function() {
 		var hash1 = $( "#hash1" ).val();
 		console.log(hash1);
@@ -20,6 +22,33 @@ $(document).ready(function() {
         	$(".danger").hide(1000);
 		}
 	});
+	
+	
+	$( ".remUser" ).click(function() {
+		var userToRemove = $(this).val();
+		console.log(userToRemove);
+		$.ajax({
+	         type: "GET",
+	         url:"../php/user.php",
+	         data: "userToRemove="+userToRemove,
+	         success: function(msg){
+	        	 $(".userOnTable").html(msg);
+	        	 
+	        	$(".success").show(1000).delay( 5000 );
+	        	$(".success").hide(1000);
+	        	
+	         }
+	     });
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
 });
 
 function checkAllFieldsOk(){

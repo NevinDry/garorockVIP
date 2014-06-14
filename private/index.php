@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-	include "../php/showUser.php";
+	include "../php/user.php";
 ?>
 <head>
     <meta charset="utf-8">
@@ -11,102 +11,12 @@
     <link href="../css/bootstrap.css" rel="stylesheet">
     <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script src="../js/mainPrivate.js"></script>
     
     <link href="../css/half-slider.css" rel="stylesheet">
     <meta name="description" content="">
     <meta name="author" content="">
-    
-    <?php
-        echo '<script> var MyUsers = "'.getAllUsers().'" </script>';
-    ?>
-    <script>
-        
-        var csv= {
-            usersInCSV : Array(),
-            getAllUsers:function(){
-                var finalUsers = new Array();
-                var userLine = new Array();
-                
-                userLine = MyUsers.split('NEWLINE');
-                for(var i = 0; i < userLine.length; i++){
-                    finalUsers[i] = userLine[i].split(';');
-                }
-                csv.usersInCSV = finalUsers;
-            },
-            kickThisOne:function(e){
-                var copy = csv.usersInCSV;
-                var cpt = 0;
-                for(var i = 0; i < csv.usersInCSV.length; i++){
-                    if( csv.usersInCSV[i][1] != e){
-                        copy[cpt] = csv.usersInCSV[i];
-                        cpt++;
-                    }
-                }
-                csv.usersInCSV = copy;
-            },
-            writeInFile:function(){
-                var cleaner = new XMLHttpRequest();
-                cleaner.open('POST', '../php/csvCleaner.php');
-                var form = new FormData();
-                cleaner.upload.onprogress = function(event) {
-                    if (event.lengthComputable) {
-                    }
-                }
+    <script src="../js/mainPrivate.js"></script>
 
-                cleaner.onreadystatechange = function() {
-                    if (cleaner.readyState == 4) {
-                            // state OK
-                    }
-                }
-                cleaner.send(form);
-                
-                console.log(csv.usersInCSV)
-                for(var i = 0; i < (csv.usersInCSV.length - 2); i++){
-                    if (csv.usersInCSV[i][0] === "team1" || csv.usersInCSV[i][0] === "team2" ){
-                        console.log('utilisateur '+ i );
-                        console.log(csv.usersInCSV[i]);
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST', '../php/csvWriter.php');
-                        var form = new FormData();
-
-                        var idtwitter = csv.usersInCSV[i][1];
-                        var name = csv.usersInCSV[i][2];;
-                        var team = csv.usersInCSV[i][0];;
-                        form.append('idtwitter', idtwitter);
-                        form.append('name', name);
-                        form.append('team', team);
-
-                        xhr.upload.onprogress = function(event) {
-                            if (event.lengthComputable) {
-                            }
-                        }
-
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState == 4) {
-                                    // state OK
-                            }
-                        }
-                        xhr.send(form);
-                    }
-                    else{
-                        i++;
-                    }
-                }
-                location.reload();
-            },
-            view:function(){
-
-            },
-            kickSomeOne:function(e){
-                csv.getAllUsers();
-                csv.kickThisOne(e);
-                csv.writeInFile();
-                csv.view();
-            }
-        }
-        
-    </script>
 
 </head>
 
@@ -134,18 +44,17 @@
             <span class="icon-next"></span>
         </a>
     </div>
-            <div class="row" style="margin-top: 80px;">
+        <div class="section-colored" style="margin-top:30px">
+        <div class="container">
             	<div class="col-xs-6">
-            		<label>Hashtag (sans le # ni ponctuation) :</label><input type="text" id="hash1" class="form-control">
+            		<label>Hashtag (sans le # ni ponctuation) :</label><input type="text" id="hash1" class="form-control" placeholder="Hashtag du concours">
+        			<input class="btnPrivate" type="submit" value="Changer">
         		</div>
-            </div>
-            </div>
-            <div class="row" style="margin-top: 20px;">
-            	<div class="col-xs-12" style="text-align:center;">
-            		<input class="btnPrivate" type="submit" value="Changer">
-            </div>
+        </div>
+        </div>
+
             <div style="display : none" class="success">
-            	<span class="label label-success">Changement Résussit !</span><br/>
+            	<span class="label label-success">Changement Resussit !</span><br/>
             </div>
             <div style="display : none" class="danger">
             	<span class="label label-danger"> Erreur lors du changement ! </span><br/>
@@ -163,7 +72,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="userOnTable">
                         <?php
                             drawTable();
                         ?>
